@@ -1,0 +1,74 @@
+<ion-header >
+  <ion-toolbar color="primary">
+    <ion-title>
+      Currency Converter App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card class="welcome-card">
+     
+      <ion-card-header>
+        <ion-card-subtitle>Get Started</ion-card-subtitle>
+        <ion-card-title>Welcome to Currency Converter</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Simply select the desired currency in both of the selector and prepare to be amazed!</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-row>
+        <ion-col class="selectors">
+          <ion-item>
+          <ion-label>From:</ion-label>
+          <select class="select-list" [(ngModel)]="fromCurr" (change)="fetchCurrencyRates()" color="primary">
+            <option *ngFor="let item of countryCodes" selected value="{{item}}">{{item}}</option>
+          </select>
+        </ion-item>
+        </ion-col>
+    
+        <ion-col>
+          <ion-item>
+          <ion-label>To:</ion-label>
+          <select class="select-list" [(ngModel)]="toCurr" (change)="fetchCurrencyRates()" color="primary">
+            <option *ngFor="let item of countryCodes" value="{{item}}">{{item}}</option>
+          </select>
+        </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-item>
+        <ion-row>
+          <ion-input type="number" class="value-input" [(ngModel)]="from" placeholder="From Amount" (keyup)="calculateCurrencyOne()"></ion-input>
+        </ion-row>
+      </ion-item>
+        <br>
+        <ion-item>
+        <ion-row>
+          <ion-input type="number" class="value-input" [(ngModel)]="to" placeholder="To ionAmount" (keyup)="calculateCurrencyTwo()"></ion-input>
+        </ion-row>
+      </ion-item>
+      <!-- #endregion -->
+    
+      <!-- #region -->
+      
+    
+      <ion-row>
+        <ion-card class="card-view" style="margin-left:auto; margin-right:auto; display:inline-block">
+          <ion-card-header>
+              <p>Result: {{rates}}</p>
+          </ion-card-header>
+        
+          <ion-card-content class="card-contents">
+            <ion-row>
+              <p>{{countriesName.get(fromCurr)}}</p>
+             
+            </ion-row>
+            
+            <ion-row>
+              <p>{{countriesName.get(toCurr)}}</p>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+      <!-- #endregion -->
+</ion-content>
